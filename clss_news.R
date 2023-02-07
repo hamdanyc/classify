@@ -5,8 +5,7 @@ library(RTextTools)
 library(dplyr)
 
 # read data files ----
-con <- RMariaDB::dbConnect(RMariaDB::MariaDB(), username="abi", password="80907299",
-                           dbname="news", host="192.168.1.122", port="3306")
+con <- RMariaDB::dbConnect(RMariaDB::MariaDB(), group = "pve")
 res <- dbSendQuery(con, "SELECT * FROM text limit 5000")
 news <- RMariaDB::dbFetch(res)
 RMariaDB::dbClearResult(res)
